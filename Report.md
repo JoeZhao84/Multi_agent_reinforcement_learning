@@ -108,6 +108,7 @@ In this table, a Convergence value of 3000 indicates that the algorithm exhauste
 The cases shown in boldface are cases that led to a successful solution of the environment. 
 
 |Case| seed | BUFFER_SIZE | BATCH_SIZE | TAU  | LR_ACTOR | LR_CRITIC | WEIGHT_DECAY | fc1_units | fc2_units           | Convergence |
+|---|---|--------------|-------------|-------|-----------|------------|---------------|------------|---------------------|------|
 |**1**  | 1 | 100000 |  64 |  0.001 |  0.0002 |  0.0001 |  0 |  400 |  300 |  **1424** | 
 |2  | 1 | 100000 |  64 |  0.001 |  0.0001 |  0.0001 |  0 |  400 |  300 |  3000 | 
 |3  | 1 | 100000 |  128 |  0.001 |  0.0003 |  0.0001 |  0 |  400 |  300 |  3000 | 
