@@ -137,7 +137,7 @@ The figure below shows the average score (averaged over 100 episodes.) It can al
 
 A video of the solved environment has been uploaded to [YouTube.](https://www.youtube.com/watch?v=kxhpkH3aO0w)
 
-Successful models are `models` folder. 
+Successful models are available in the `models` folder. 
 
  
 ![Results][image3]
