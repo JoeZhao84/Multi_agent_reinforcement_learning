@@ -33,7 +33,6 @@ The following figure ([[5]](https://www.renom.jp/notebooks/tutorial/reinforcemen
  
 ![DDPG algorithm][image4]  
 
-
 The steps of the DDPG algorithm are listed below. ([[5]](https://www.renom.jp/notebooks/tutorial/reinforcement_learning/DDPG/notebook.html)): 
 
 1. Two Neural Networks , Actor ***μ*** and Critic ***Q*** are initialized.
@@ -41,16 +40,16 @@ The steps of the DDPG algorithm are listed below. ([[5]](https://www.renom.jp/no
 3. Get initial state ***s***
 4. Get action ***a*** = ***μ***(***s***)
 5. Take action ***a*** and get reward ***r*** with next state ***s′***
-6. Get the value of present state, **value**(***s***,***a***)=***Q***(***s***,***a***)
-7. Get target action ***a′***=***μ′***(***s′***) and target critic value of next state ***Q′***(***s′***,***a′***)
-8. Get value of current state from Bellman equation, **value**_**target**(***s***,***a***)=***r***+***Q′***(***s′***,***a′***)
-9. Get Loss 1/m ∑(**value**_**target**(***s′***,***a′***)−**value**(***s***,***a***))^2
+6. Get the value of present state, **value** ( ***s*** , ***a*** )= ***Q*** ( ***s*** , ***a*** )
+7. Get target action ***a′*** = ***μ′*** ( ***s′*** ) and target critic value of next state ***Q′*** ( ***s′*** , ***a′*** )
+8. Get value of current state from Bellman equation, **value** _ **target** (***s*** , ***a*** ) = ***r*** + ***Q′*** ( ***s′*** , ***a′*** )
+9. Get Loss 1/m ∑( **value** _ **target** ( ***s′*** , ***a′*** ) − **value** ( ***s*** , ***a*** ))^2
 10. Update Critic Network according to the loss
-11. Get Gradient of ***Q***(***s***,***a***) with respect to actor network ***μ***(***s***), ∂***Q***/∂***μ***(***s***)
-12. Get Gradient of ***μ***(***s***) with respect to weights of actor network ***θ** ****μ***, ∂***μ***(***s***)∂***θ***_***μ***
-13. Update Critic Network by maximizing the value of ∂***Q***/∂***μ***(***s***) ∂***μ***(***s***)/∂***θ_μ***
-14. Update target critic using the equation ***Q′***←***τQ***+(1−***τ***)***Q′***
-15. Update target actor using the equation ***μ′***←***τμ***+(1−***τ***)***μ′***
+11. Get Gradient of ***Q*** ( ***s*** , ***a***) with respect to actor network ***μ*** ( ***s*** ), ∂ ***Q*** /∂ ***μ*** ( ***s*** )
+12. Get Gradient of ***μ*** ( ***s***) with respect to weights of actor network ***θ*** ***μ***, ∂*** μ*** (***s*** )∂ ***θ*** _ ***μ***
+13. Update Critic Network by maximizing the value of ∂ ***Q*** /∂ ***μ*** ( ***s*** ) ∂ ***μ*** ( ***s*** )/∂ ***θ_μ***
+14. Update target critic using the equation ***Q′*** ← ***τQ*** + (1− ***τ*** ) ***Q′***
+15. Update target actor using the equation ***μ′*** ← ***τμ*** + (1− ***τ*** ) ***μ′***
 
 
 In the MADDPG model [[3]](https://towardsdatascience.com/the-coopetition-dilemma-building-reinforcement-learning-agents-that-learn-to-collaborate-and-84f2b2acb186), each agent is treated as an “actor” which gets advice from a “critic” about the what action to take. The critic is a model of the world that predicts the future reward of an action in a particular state, which is used by the agent — the actor — to update its policy. To make it feasible to train multiple agents that can act in a globally-coordinated way, MADDPG allow critics to access the observations and actions of all the agents. However, at the actual execution time,  the agents do not need to access the central critic and act solely based on their observations and ***their predictions of other agents behaviors***. Since a centralized critic is learned independently for each agent, this approach can also be used to model different kinds of reward structures, such as zero-sum games, cooperative games, and mixed games. 
